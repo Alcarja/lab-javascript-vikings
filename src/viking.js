@@ -53,15 +53,33 @@ class War {
         this.vikingArmy = [];
         this.saxonArmy = [];
     }
-   addViking(vikingName) {
+   addViking(vikingName) { //Aquí añades el nombre de uno de los objetos o "vikingos" que has creado con el constructor "class viking"
+    this.vikingArmy.push(vikingName);
+   };
+
+   addSaxon(saxonName) { //Aquí añades el nombre de uno de los objetos o "saxons" que has creado con el constructor "class viking"
+    this.saxonArmy.push(saxonName);
+   };
+
+   vikingAttack() {
+    let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+    let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+    let result = randomSaxon.receiveDamage(randomViking.strength);
+    if(randomSaxon.health <= 0) {
+        this.saxonArmy.splice(this.saxonArmy.indexOf(randomSaxon))
+    } return result;
     
    };
 
+   saxonAttack() {
+    let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+    let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+    let result = randomViking.receiveDamage(randomSaxon.strength);
+    if(randomViking.health <= 0) {
+        this.vikingArmy.splice(this.vikingArmy.indexOf(randomViking))
+    } return result;
+   };
 
-
-   addSaxon() {};
-   vikingAttack() {};
-   saxonAttack() {};
    showsStatus() {};
  
 }
